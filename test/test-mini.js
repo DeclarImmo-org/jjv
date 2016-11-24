@@ -223,7 +223,6 @@ describe("basic functinal test", function () {
     });
   });
 
-
   describe("nested objects", function () {
     user_schema.definitions = {
       location: {
@@ -306,6 +305,24 @@ describe("basic functinal test", function () {
       "version": "0.1.0"
     };
     expect(jjv.validate(selfReferentialSchema, manifest)).to.be.null;
+  });
+
+  describe("null objects", function() {
+    user_schema.properties.personal = {
+      type: ['object', 'null'],
+      properties: {
+        gender: {
+          type: 'string'
+        }
+      },
+      required: ['gender']
+    };
+
+    it("null", function () {
+      user_object.personal = null;
+      expect(jjv.validate('user', user_object)).to.be.null;
+    });
+
   });
 
   describe("useDefault", function() {
