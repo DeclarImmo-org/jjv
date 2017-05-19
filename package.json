@@ -1,6 +1,6 @@
 {
   "name": "jjv",
-  "version": "1.0.2-perfimmo.0",
+  "version": "1.0.2-perfimmo.1",
   "author": "Alex Cornejo",
   "devDependencies": {
     "chai": "~1.8.1",
