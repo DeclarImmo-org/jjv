@@ -325,6 +325,23 @@ describe("basic functinal test", function () {
 
   });
 
+  describe("undefined properties", function() {
+    user_schema.properties.middlename = {
+      type: 'string',
+    };
+
+    it("undefined", function () {
+      user_object.middlename = undefined; 
+      expect(jjv.validate('user', user_object)).to.be.null;
+    });
+
+    it("undefined required", function () {
+      user_object.firstname = undefined;
+      expect(jjv.validate('user', user_object)).to.have.deep.property('validation.firstname.required');
+    });
+
+  });
+
   describe("useDefault", function() {
     it("should clone default values", function() {
       var defaults_schema = {
